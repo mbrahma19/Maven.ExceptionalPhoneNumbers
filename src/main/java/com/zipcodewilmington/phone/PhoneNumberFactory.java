@@ -52,8 +52,8 @@ public final class PhoneNumberFactory {
         if(phoneNumberString.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
             try {
                 phoneNumber = new PhoneNumber(phoneNumberString);
-                logger.log(Level.FINE,"Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
             } catch (InvalidPhoneNumberFormatException e) {
+                logger.log(Level.FINE,"Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
             }
         }
         return phoneNumber;
@@ -66,9 +66,10 @@ public final class PhoneNumberFactory {
      */ // TODO - Add throws statement to method signature
     public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException {
         if (!phoneNumberString.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
-            throw new InvalidPhoneNumberFormatException();
-        }else{
             logger.log(Level.FINE,"Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
+            throw new InvalidPhoneNumberFormatException();
+
+        }else{
             return new PhoneNumber(phoneNumberString);
         }
 
